@@ -7,6 +7,9 @@ export const parse = R.curry((parser, input) => {
     if (res.status === true) {
         return S.Right(res.value)
     } else {
-        return S.Left({error: res.expected, pos: res.index})
+        let text =
+            '...' + input.substring(res.index - 10, res.index + 10) + '...' +
+            '\n             ^'
+        return S.Left({error: res.expected, pos: res.index, text: text})
     }
 })
