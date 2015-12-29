@@ -20,9 +20,9 @@ System.config({
     "daggy": "npm:daggy@0.0.1",
     "parsimmon": "npm:parsimmon@0.7.0",
     "ramda": "npm:ramda@0.19.0",
-    "ramda-fantasy": "npm:ramda-fantasy@0.4.1",
     "react": "npm:react@0.14.3",
     "react-dom": "npm:react-dom@0.14.3",
+    "sanctuary": "npm:sanctuary@0.7.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -134,9 +134,6 @@ System.config({
       "asap": "npm:asap@2.0.3",
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
-    "npm:ramda-fantasy@0.4.1": {
-      "ramda": "npm:ramda@0.17.1"
-    },
     "npm:ramda@0.17.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -160,6 +157,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
+    },
+    "npm:sanctuary@0.7.1": {
+      "ramda": "npm:ramda@0.17.1"
     },
     "npm:source-map@0.1.31": {
       "amdefine": "npm:amdefine@1.0.0",

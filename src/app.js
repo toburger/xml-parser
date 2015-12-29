@@ -1,26 +1,9 @@
 import { parse } from './parser';
 import { expr, interpret } from './parser/sexpression';
 import { compose, curry, identity, map, defaultTo } from 'ramda';
+import S from 'sanctuary';
 import React from 'react';
 import { render } from 'react-dom';
-
-// //console.debug(P);
-//
-// // const parseRes1 = parse(expr, '3')
-// const parseRes2 = parse(expr, '(add (mul 10 (add 3 4)) (add 7 8))')
-//
-const bimap = curry((error, success, either) =>
-  either.bimap(error, success))
-//
-// const out = bimap(
-//   ({error, pos}) => console.error(`err: ${error}, pos: ${pos}`),
-//   res => console.log(res)
-// )
-//
-// // run :: Either Err SExpr -> unit
-// const run = compose(out, map(interpret))
-//
-// run(parseRes2)
 
 const App = React.createClass({
   getInitialState() {
@@ -28,7 +11,7 @@ const App = React.createClass({
       sexpr: '',
       result: '',
       error: ''
-    };
+    }
   },
   onError: curry(function(sexpr, {error, pos}) {
      this.setState({
@@ -42,16 +25,16 @@ const App = React.createClass({
       result,
       sexpr,
       error: ''
-    });
+    })
   }),
   updateInput(e) {
     const sexpr = e.target.value;
     const result = parse(expr, sexpr);
-    bimap(
+    S.either(
       this.onError(sexpr).bind(this),
       this.onSuccess(sexpr).bind(this),
       map(interpret, result)
-    );
+    )
   },
   render() {
     return (
@@ -61,7 +44,7 @@ const App = React.createClass({
           (<div>{this.state.result}</div>) :
           (<div style={{color:'red'}}>{this.state.error}</div>)}
       </div>
-    );
+    )
   }
 })
 

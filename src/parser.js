@@ -1,12 +1,12 @@
-import { Either, Maybe } from 'ramda-fantasy';
-import { curry } from 'ramda';
+import R from 'ramda';
+import S from 'sanctuary';
 
-// parse :: Parser SExpr -> String -> Either Err SExpr
-export const parse = curry((parser, input) => {
+// parse :: Parser Val -> String -> Either Err Val
+export const parse = R.curry((parser, input) => {
     const res = parser.parse(input)
     if (res.status === true) {
-        return Either.Right(res.value)
+        return S.Right(res.value)
     } else {
-        return Either.Left({error: res.expected, pos: res.index})
+        return S.Left({error: res.expected, pos: res.index})
     }
 })
