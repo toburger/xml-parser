@@ -13,7 +13,7 @@ const Xml = daggy.taggedSum({
 const lexeme = p => p.skip(P.optWhitespace)
 
 const tagName =
-    P.regex(/[a-z][a-z0-9-:]*/i)
+    P.regex(/[a-z][a-z0-9-_:]*/i)
      .desc('invalid tag name')
 
 const attributeName =
