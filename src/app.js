@@ -1,5 +1,5 @@
 import { parse } from './parser';
-import { expr, interpret } from './parser/sexpr';
+import { expr, interpret } from './parser/sexpression';
 import { compose, curry, identity, map, defaultTo } from 'ramda';
 import React from 'react';
 import { render } from 'react-dom';
@@ -56,7 +56,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <input onChange={this.updateInput} value={this.state.sexpr} />
+        <textarea onChange={this.updateInput} value={this.state.sexpr} rows="4" cols="40"></textarea>
         {!this.state.error ?
           (<div>{this.state.result}</div>) :
           (<div style={{color:'red'}}>{this.state.error}</div>)}
