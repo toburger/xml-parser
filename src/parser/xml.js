@@ -1,7 +1,6 @@
 import P from 'parsimmon'
 import R from 'ramda'
 import S from 'sanctuary'
-import { parse } from '../parser'
 import daggy from 'daggy'
 
 const Xml = daggy.taggedSum({
