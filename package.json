@@ -15,6 +15,7 @@
       "ramda": "npm:ramda@^0.19.0",
       "react": "npm:react@^0.14.3",
       "react-dom": "npm:react-dom@^0.14.3",
+      "react-textarea-autosize": "npm:react-textarea-autosize@^3.2.0",
       "sanctuary": "npm:sanctuary@^0.7.1"
     },
     "devDependencies": {

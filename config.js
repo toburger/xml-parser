@@ -20,8 +20,9 @@ System.config({
     "daggy": "npm:daggy@0.0.1",
     "parsimmon": "npm:parsimmon@0.7.0",
     "ramda": "npm:ramda@0.19.0",
-    "react": "npm:react@0.14.3",
+    "react": "npm:react@0.14.5",
     "react-dom": "npm:react-dom@0.14.3",
+    "react-textarea-autosize": "npm:react-textarea-autosize@3.2.0",
     "sanctuary": "npm:sanctuary@0.7.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -92,7 +93,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:fbjs@0.3.2": {
+    "npm:fbjs@0.6.0": {
       "core-js": "npm:core-js@1.2.6",
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -141,11 +142,14 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:react-dom@0.14.3": {
-      "react": "npm:react@0.14.3"
+      "react": "npm:react@0.14.5"
     },
-    "npm:react@0.14.3": {
+    "npm:react-textarea-autosize@3.2.0": {
+      "react": "npm:react@0.14.5"
+    },
+    "npm:react@0.14.5": {
       "envify": "npm:envify@3.4.0",
-      "fbjs": "npm:fbjs@0.3.2",
+      "fbjs": "npm:fbjs@0.6.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:readable-stream@1.1.13": {

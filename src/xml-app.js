@@ -4,6 +4,7 @@ import R from 'ramda'
 import S from 'sanctuary'
 import React from 'react'
 import { render } from 'react-dom'
+import TextAreaAutosize from 'react-textarea-autosize'
 
 const getText = R.curry((acc, xml) => xml.cata({
     Text: R.identity,
@@ -45,36 +46,48 @@ const App = React.createClass({
         })
     },
     render() {
+
+        const toElement = maybe =>
+            S.fromMaybe(undefined, maybe)
+
+        const input =
+            (<TextAreaAutosize
+                style={{boxSizing: 'border-box', width: '100%'}}
+                minRows={8}
+                maxRows={20}
+                onChange={this.updateXmlInput}
+                value={this.state.input} />)
+
+        const toTextArea = s =>
+            (<TextAreaAutosize
+                readOnly
+                style={{boxSizing: 'border-box', width: '100%'}}
+                minRows={8}
+                maxRows={20}
+                value={s} />)
+        const asJson = r => JSON.stringify(r, undefined, 4)
         const result =
-            S.fromMaybe(
-                null,
-                this.state.result
-                    .map(r =>
-                        JSON.stringify(r, undefined, 4)
-                    ).map(r =>
-                        (<pre>{r}</pre>)
-                    )
+            toElement(
+                R.map(
+                    R.compose(toTextArea, asJson),
+                    this.state.result
+                )
             )
 
+        const toUl = lis =>
+            (<ul>{lis}</ul>)
+        const toLi = (el, i) =>
+            (<li key={`text-${i}`}>{el}</li>)
         const texts =
-            S.fromMaybe(
-                null,
-                R.map(lis => (<ul>{lis}</ul>),
-                    R.map(
-                        R.compose(
-                            R.addIndex(R.map)((el, i) =>
-                                (<li key={`text-${i}`}>{el}</li>)
-                            ),
-                            getText([])
-                        ),
-                        this.state.result
-                    )
+            toElement(
+                R.map(
+                    R.compose(toUl, R.addIndex(R.map)(toLi), getText([])),
+                    this.state.result
                 )
             )
 
         const error =
-            S.fromMaybe(
-                null,
+            toElement(
                 this.state.error.map(({error, text}) => (
                     <div style={{color: 'red'}}>
                         <ul>{error.map((msg, i) =>
@@ -85,11 +98,11 @@ const App = React.createClass({
             )
         )
 
-        const time = <div>{`${this.state.time} ms`}</div>
+        const time = (<div>{`${this.state.time} ms`}</div>)
 
         return (
             <div>
-                <textarea cols="60" rows="10" onChange={this.updateXmlInput} value={this.state.input}></textarea>
+                {input}
                 {time}
                 {result}
                 {texts}
